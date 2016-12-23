@@ -14,8 +14,9 @@ class Weather extends AbstractCommand
         return 'weather';
     }
 
-    public function processCommand(string $command)
+    public function processCommand(string $commandString)
     {
-        echo 'Weather: ' . $command, "\n";
+        $words = $this->getWords($commandString);
+        return array_values(array_diff($words, $this->stopWords));
     }
 }

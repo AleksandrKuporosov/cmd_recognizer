@@ -8,6 +8,9 @@ abstract class AbstractCommand
     protected $stopWords = [];
 
     abstract public function getClass(): string;
+
+    // todo: rename to get targets
+    // todo: use phpmorph
     abstract public function processCommand(string $command);
 
     public function __construct(array $data)

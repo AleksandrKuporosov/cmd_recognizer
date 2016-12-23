@@ -16,9 +16,7 @@ class ToDoList extends AbstractCommand
 
     public function processCommand(string $commandString)
     {
-        var_dump($this->getClass());
         $words = $this->getWords($commandString);
-        $diff = array_diff($words, $this->stopWords);
-        var_dump($diff);
+        return array_values(array_diff($words, $this->stopWords));
     }
 }

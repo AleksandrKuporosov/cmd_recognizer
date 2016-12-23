@@ -7,6 +7,11 @@ use app\Commands\ToDoList;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
+/**
+ * todo: write tests for all commands
+ *
+ * Class CommandsTest
+ */
 class CommandsTest extends PHPUnit_Framework_TestCase
 {
     /** @var AbstractCommand[] */
