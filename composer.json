@@ -1,0 +1,5 @@
+{
+  "require": {
+    "camspiers/statistical-classifier": "0.8.0"
+  }
+}
