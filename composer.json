@@ -2,7 +2,7 @@
   "require": {
     "camspiers/statistical-classifier": "0.8.0",
     "umisoft/phpmorphy": "^1.0",
-    "php-di/php-di": "^5.4",
-    "slim/slim": "^3.7"
+    "slim/slim": "^3.7",
+    "phpunit/phpunit": "5.7.4"
   }
 }

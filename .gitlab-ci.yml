@@ -1,0 +1,10 @@
+before_script:
+  - composer install
+
+stages:
+  - test
+  - deploy
+
+test:
+  script:
+  - php vendor/phpunit/phpunit/phpunit
