@@ -4,6 +4,7 @@ use app\Commands\AbstractCommand;
 use app\Commands\ToDoBuy;
 use app\Commands\ToDoCreate;
 use app\Commands\ToDoList;
+use app\Helpers\Text;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
@@ -12,7 +13,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataArray;
  *
  * Class CommandsTest
  */
-class CommandsTest extends PHPUnit_Framework_TestCase
+class CommandsTest extends BaseTest
 {
     /** @var AbstractCommand[] */
     protected $commands;
@@ -22,11 +23,23 @@ class CommandsTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        parent::setUp();
+
+        $morphy = $this->container['morphy']();
         /** @var AbstractCommand[] $commands */
         $commands = [
-            'todo.buy' => new ToDoBuy(ToDoBuy::getData()),
-            'todo.create' => new ToDoCreate(ToDoCreate::getData()),
-            'todo.list' => new ToDoList(ToDoList::getData()),
+            'todo.buy' => new ToDoBuy(
+                ToDoBuy::getData(),
+                $morphy
+            ),
+            'todo.create' => new ToDoCreate(
+                ToDoCreate::getData(),
+                $morphy
+            ),
+            'todo.list' => new ToDoList(
+                ToDoList::getData(),
+                $morphy
+            ),
         ];
 
         $source = new DataArray();
@@ -42,6 +55,7 @@ class CommandsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ToDoBuy::getTargets()
      * @dataProvider todoBuyDataProvider
      * @param string $command
      * @param string $expectedClass
@@ -58,7 +72,7 @@ class CommandsTest extends PHPUnit_Framework_TestCase
 
         $todoBuy = $this->commands[$predictedClass];
 
-        $targets = $todoBuy->processCommand($command);
+        $targets = $todoBuy->getTargets($command);
         self::assertSame($expectedTarget, $targets);
     }
 
@@ -73,7 +87,7 @@ class CommandsTest extends PHPUnit_Framework_TestCase
             [
                 'добавь колбасу в список покупок',
                 'todo.buy',
-                ['колбасу'],
+                ['колбаса'],
             ],
             [
                 'надо купить морковь',
@@ -84,28 +98,17 @@ class CommandsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Text::normalizeWords()
      * @dataProvider normalizeTargetProvider
-     * @param string $command
+     * @param string $target
      * @param string $expected
      */
     public function testNormalizeCommand(
-        string $command,
+        string $target,
         string $expected
     ) {
-
-        // set some options
-        $opts = [
-            'storage' => PHPMORPHY_STORAGE_FILE,
-            'predict_by_suffix' => true,
-            'predict_by_db' => true,
-        ];
-
-       $dir = __DIR__ . '/../dicts/utf-8';
-        $lang = 'ru_RU';
-
-        $morphy = new phpMorphy($dir, $lang, $opts);
-
-        $all_forms = $morphy->getAllForms('слова');
+        $normalized = Text::normalizeWords($this->container['morphy'](), [$target]);
+        self::assertSame($expected, $normalized[0]);
     }
 
     public function normalizeTargetProvider(): array
