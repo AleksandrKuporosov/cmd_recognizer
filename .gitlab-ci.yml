@@ -1,9 +1,10 @@
+image: registry.gitlab.com/akupo/bayes:php7
+
 before_script:
   - composer install
 
 stages:
   - test
-  - deploy
 
 test:
   script:
