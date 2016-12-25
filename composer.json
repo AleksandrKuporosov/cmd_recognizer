@@ -1,5 +1,6 @@
 {
   "require": {
-    "camspiers/statistical-classifier": "0.8.0"
+    "camspiers/statistical-classifier": "0.8.0",
+    "umisoft/phpmorphy": "^1.0"
   }
 }

@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4aece48ed8d89846c5147593bf5f7ac7",
+    "hash": "aa65fdf3f63b36f6fc40af66c7542a04",
+    "content-hash": "656c78e1cda129578ee9141cc4f9dabf",
     "packages": [
         {
             "name": "camspiers/statistical-classifier",
@@ -63,7 +64,7 @@
                 "naive",
                 "svm"
             ],
-            "time": "2014-01-05T22:29:29+00:00"
+            "time": "2014-01-05 22:29:29"
         },
         {
             "name": "symfony/config",
@@ -119,7 +120,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-10T08:21:45+00:00"
+            "time": "2016-12-10 08:21:45"
         },
         {
             "name": "symfony/filesystem",
@@ -168,7 +169,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-20T05:43:46+00:00"
+            "time": "2016-07-20 05:43:46"
         },
         {
             "name": "symfony/options-resolver",
@@ -222,7 +223,44 @@
                 "configuration",
                 "options"
             ],
-            "time": "2016-10-18T04:28:30+00:00"
+            "time": "2016-10-18 04:28:30"
+        },
+        {
+            "name": "umisoft/phpmorphy",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Umisoft/phpmorphy.git",
+                "reference": "91e13dbbdb439fee62f31890de27e88b1d432087"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Umisoft/phpmorphy/zipball/91e13dbbdb439fee62f31890de27e88b1d432087",
+                "reference": "91e13dbbdb439fee62f31890de27e88b1d432087",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "phpMorphy": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GPL 2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Kamaev Vladimir",
+                    "email": "heromantor@users.sourceforge.net"
+                }
+            ],
+            "description": "phpMorphy - morphological analyzer library for Russisan, English and German languages",
+            "homepage": "http://phpmorphy.sourceforge.net/",
+            "keywords": [
+                "phpmorphy"
+            ],
+            "time": "2014-07-21 15:22:40"
         }
     ],
     "packages-dev": [],

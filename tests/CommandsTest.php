@@ -82,4 +82,47 @@ class CommandsTest extends PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @dataProvider normalizeTargetProvider
+     * @param string $command
+     * @param string $expected
+     */
+    public function testNormalizeCommand(
+        string $command,
+        string $expected
+    ) {
+
+        // set some options
+        $opts = [
+            'storage' => PHPMORPHY_STORAGE_FILE,
+            'predict_by_suffix' => true,
+            'predict_by_db' => true,
+        ];
+
+       $dir = __DIR__ . '/../dicts/utf-8';
+        $lang = 'ru_RU';
+
+        $morphy = new phpMorphy($dir, $lang, $opts);
+
+        $all_forms = $morphy->getAllForms('слова');
+    }
+
+    public function normalizeTargetProvider(): array
+    {
+        return [
+            [
+                'молока',
+                'молоко'
+            ],
+            [
+                'колбасу',
+                'колбаса',
+            ],
+            [
+                'моркови',
+                'морковь',
+            ],
+        ];
+    }
 }
