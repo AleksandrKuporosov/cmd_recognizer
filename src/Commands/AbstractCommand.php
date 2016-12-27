@@ -17,9 +17,9 @@ abstract class AbstractCommand
 
     public function getTargets(string $commandString)
     {
-        $words = Text::getWords($commandString);
-        $targets = array_values(array_diff($words, $this->stopWords));
-        return Text::normalizeWords($this->morphy, $targets);
+        $words = array_filter(Text::getWords($commandString));
+        $targets = array_diff($words, $this->stopWords);
+        return array_values(Text::normalizeWords($this->morphy, $targets));
     }
 
     public function __construct(array $data, phpMorphy $morphy)

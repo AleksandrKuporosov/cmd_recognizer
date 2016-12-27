@@ -13,7 +13,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataArray;
  *
  * Class CommandsTest
  */
-class CommandsTest extends BaseTest
+class CommandsTest extends BaseTestCase
 {
     /** @var AbstractCommand[] */
     protected $commands;
@@ -93,6 +93,11 @@ class CommandsTest extends BaseTest
                 'надо купить морковь',
                 'todo.buy',
                 ['морковь'],
+            ],
+            [
+                'купить корову',
+                'todo.buy',
+                ['корова'],
             ],
         ];
     }

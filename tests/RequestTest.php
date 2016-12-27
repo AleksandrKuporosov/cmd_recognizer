@@ -1,6 +1,9 @@
 <?php
 
-class RequestTest extends SlimTest
+error_reporting(15);
+ini_set('display_errors', 1);
+
+class RequestTest extends SlimTestCase
 {
     /**
      * @dataProvider requestProvider
@@ -11,7 +14,7 @@ class RequestTest extends SlimTest
         string $command,
         array $expectedResponse
     ) {
-        $response = $this->post('/', $command);
+        $response = $this->post('/command', $command);
         self::assertSame(json_encode($expectedResponse), $response);
     }
 
@@ -40,6 +43,14 @@ class RequestTest extends SlimTest
                     'ok' => true,
                     'class' => 'todo.buy',
                     'targets' => ['морковь']
+                ],
+            ],
+            [
+                'купить корову',
+                [
+                    'ok' => true,
+                    'class' => 'todo.buy',
+                    'targets' => ['корова']
                 ],
             ],
         ];

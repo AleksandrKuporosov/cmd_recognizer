@@ -6,7 +6,7 @@ use Slim\Http\Headers;
 use Slim\Http\Request;
 use Slim\Http\Uri;
 
-class SlimTest extends BaseTest
+class SlimTestCase extends BaseTestCase
 {
     /** @var \Slim\App */
     protected $app;

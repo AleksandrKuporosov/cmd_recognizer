@@ -1,6 +1,6 @@
 <?php
 
-class BaseTest extends PHPUnit_Framework_TestCase
+class BaseTestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * @var \Pimple\Container
